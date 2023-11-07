@@ -1,0 +1,108 @@
+*{
+    box-sizing: border-box;
+
+    padding: 0;
+    margin: 0;
+}
+
+html, body, .main{
+    width: 100%;
+    height: 5000px;
+}
+
+.main{
+    background-color: #433F37;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+/* HEADER */
+
+#header{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #22231A;
+    background-color: #22231A;
+    position: fixed;
+}
+
+#header input[type=search]{
+    height: 20px;
+    border: 1px solid #DFE0DC;
+    background-color: transparent;
+    border-radius: 6px;
+    padding: 5px;
+    color: white;
+}
+
+.search{
+    display: flex;
+    gap: 15px;
+}
+
+#btnSearch{
+    color: white;
+    background: transparent;
+    border: transparent;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    transition: .4s;
+}
+
+#btnSearch:hover{
+    transform: scale(1.2); 
+}
+
+.opaco{
+    opacity: 0.3;
+}
+
+/* CARROSSEL */
+
+.carrosel{
+    width: 100%;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+}
+
+.slider{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    border: 1px solid red;
+    width: 840px;
+    height: 700px;
+    background-color: transparent;
+    overflow: hidden;
+    transition: transform 0.5s;
+}
+
+.carrosselDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 450px;
+    background-color: transparent;
+    border: 1px solid red;
+    gap: 15px;
+}
+
+.carrosselDiv h3{
+    color: white;
+    font-size: 16px;
+}
+
+.carrosselDiv img{
+    width: 240px;
+    height: 360px;
+}
+
