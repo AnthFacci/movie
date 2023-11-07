@@ -11,7 +11,7 @@ html, body, .main{
 }
 
 .main{
-    background-color: #433F37;
+    background-color: #1a1a1a;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -26,18 +26,26 @@ html, body, .main{
     justify-content: space-evenly;
     align-items: center;
     padding: 20px;
-    border: 1px solid #22231A;
-    background-color: #22231A;
+    border: 1px solid #1a1a1a;
+    background-color: #222222;
     position: fixed;
+    z-index: 1;
+}
+
+#logo{
+    width: 30px;
+    height: 30px;
+    color: #330054;
+    cursor: pointer;
 }
 
 #header input[type=search]{
     height: 20px;
-    border: 1px solid #DFE0DC;
+    border: 2px solid #330054;
     background-color: transparent;
     border-radius: 6px;
     padding: 5px;
-    color: white;
+    color: #DFE0DC ;
 }
 
 .search{
@@ -46,42 +54,60 @@ html, body, .main{
 }
 
 #btnSearch{
-    color: white;
+    color: #330054;
     background: transparent;
     border: transparent;
     cursor: pointer;
     width: 20px;
     height: 20px;
+    transform: scale(1.2); 
     transition: .4s;
 }
 
 #btnSearch:hover{
-    transform: scale(1.2); 
+    transform: scale(1.4); 
 }
 
 .opaco{
-    opacity: 0.3;
+    opacity: 0.7;
 }
 
 /* CARROSSEL */
 
 .carrosel{
+    position: relative;
+    top: 150px;
     width: 100%;
     height: 700px;
+    padding: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    border: 1px solid transparent;
+    background-color: #1F1F1F;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
 }
 
 .slider{
     display: flex;
     align-items: center;
+    padding: 20px;
     gap: 40px;
-    border: 1px solid red;
-    width: 840px;
+    border: 1px solid #1a1a1a;
+    width: 895px;
     height: 700px;
-    background-color: transparent;
-    overflow: hidden;
+    background-color: #1a1a1a;
+    overflow-y: hidden;
+    overflow-x: auto;
     transition: transform 0.5s;
+    scroll-behavior: smooth;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+}
+
+.slider::-webkit-scrollbar{
+   display: none; 
 }
 
 .carrosselDiv{
@@ -91,9 +117,14 @@ html, body, .main{
     align-items: center;
     width: 500px;
     height: 450px;
-    background-color: transparent;
-    border: 1px solid red;
+    padding: 15px;
+    background-color: #1F1F1F;
+    border: 1px solid #1F1F1F;
+    border-radius: 6px;
     gap: 15px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
 }
 
 .carrosselDiv h3{
@@ -102,7 +133,64 @@ html, body, .main{
 }
 
 .carrosselDiv img{
-    width: 240px;
+    width: 225px;
     height: 360px;
+    border: transparent;
+    border-radius: 6px;
 }
 
+#btnCarroselLeft{
+    height: 30px;
+    width: 30px;
+    background-color: transparent;
+    color: #330054;
+    border-color: transparent;
+    position: absolute;
+    left: 460px;
+    top: 350px;
+    cursor: pointer;
+    transition: .5s;
+    transform: scale(1.8); 
+    z-index: 1;
+
+}
+
+#btnCarroselRight{
+    height: 30px;
+    width: 30px;
+    background-color: transparent;
+    color: #330054;
+    border-color: transparent;
+    position: absolute;
+    right: 460px;
+    top: 350px;
+    cursor: pointer;
+    transition: .5s;
+    transform: scale(1.8); 
+    z-index: 1;
+}
+
+
+.carrosel > #btnCarroselLeft:hover{
+    transform: scale(2.2); 
+}
+
+.carrosel > #btnCarroselRight:hover{
+    transform: scale(2.2); 
+}
+
+.titleCarrosel{
+    position: absolute;
+    font-size: 26px;
+    color: #DFE0DC;
+    top: 50px;
+    left: 540px;
+}
+
+#fogo{
+    position: absolute;
+    color: #CB1B00;
+    font-size: 26px;
+    top: 50px;
+    left: 700px;
+}

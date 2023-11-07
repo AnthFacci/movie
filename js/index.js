@@ -18,13 +18,14 @@ window.addEventListener('scroll', ()=>{
 })
 
 //FUNCTION
+
 async function carrosel(){
     const res = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc&api_key=${apiKey}`);
     const data = await res.json();
     console.log(data);
 
     if(data.results){
-       for (let index = 0; index < 5 && index < data.results.length; index++) {
+       for (let index = 0; index < 5; index++) {
         const div = document.createElement('div');
         const title = document.createElement('h3');
         const poster = document.createElement('img');
@@ -36,6 +37,21 @@ async function carrosel(){
        }
     }
 
+    leftBtn.addEventListener('click', (e)=>{
+        e = 1;
+        if(e == 1){
+         slider.scrollLeft = slider.scrollLeft - 300;
+
+        }
+    })
+
+    rightBtn.addEventListener('click', (e)=>{
+        e = 2;
+        if(e == 2){
+         slider.scrollLeft = slider.scrollLeft + 300;
+         
+        }
+    })
 }
 
 
