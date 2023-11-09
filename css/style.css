@@ -14,6 +14,7 @@ html, body, .main{
     background-color: #1a1a1a;
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 100%;
 }
 
@@ -27,7 +28,7 @@ html, body, .main{
     align-items: center;
     padding: 20px;
     border: 1px solid #1a1a1a;
-    background-color: #222222;
+    background-color: #DFE0DC;
     position: fixed;
     z-index: 1;
 }
@@ -82,11 +83,12 @@ html, body, .main{
     padding: 20px;
     display: flex;
     flex-direction: column;
+    gap: 10px;
     justify-content: center;
     align-items: center;
     border: 1px solid transparent;
-    background-color: #1F1F1F;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+    background-color: #DFE0DC;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 1.0);
 }
 
 .slider{
@@ -95,8 +97,8 @@ html, body, .main{
     padding: 20px;
     gap: 40px;
     border: 1px solid #1a1a1a;
-    width: 895px;
-    height: 700px;
+    width: 1195px;
+    height: 600px;
     background-color: #1a1a1a;
     overflow-y: hidden;
     overflow-x: auto;
@@ -128,7 +130,7 @@ html, body, .main{
 }
 
 .carrosselDiv h3{
-    color: white;
+    color: #DFE0DC;
     font-size: 16px;
 }
 
@@ -146,7 +148,7 @@ html, body, .main{
     color: #330054;
     border-color: transparent;
     position: absolute;
-    left: 460px;
+    left: 310px;
     top: 350px;
     cursor: pointer;
     transition: .5s;
@@ -162,7 +164,7 @@ html, body, .main{
     color: #330054;
     border-color: transparent;
     position: absolute;
-    right: 460px;
+    right: 310px;
     top: 350px;
     cursor: pointer;
     transition: .5s;
@@ -179,18 +181,175 @@ html, body, .main{
     transform: scale(2.2); 
 }
 
+.title{
+    display: flex;
+    gap: 10px;
+    width: 1195px;
+}
+
 .titleCarrosel{
-    position: absolute;
     font-size: 26px;
-    color: #DFE0DC;
-    top: 50px;
-    left: 540px;
+    color: #1a1a1a;
 }
 
 #fogo{
-    position: absolute;
     color: #CB1B00;
     font-size: 26px;
     top: 50px;
     left: 700px;
+}
+
+
+.logoAnimated{
+    display: flex;
+    gap: 1px;
+}
+
+.animate{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    left: 588px;
+    top: 24px;
+    gap: 1px;
+    padding: 5px;
+}
+
+.animate hr{
+    border: 0px solid black;
+    left: 4px;
+    width: 0px;
+    height: 1px;
+    background-color: #1a1a1a;
+}
+
+.logoAnimated:hover .animate hr{
+     animation: LogoAnimation 1s;
+}
+
+.logoAnimated:hover .animate hr:nth-child(1) {
+    animation: LogoAnimation 0.5s;  
+    animation-delay: 0.5s;
+}
+
+.logoAnimated:hover .animate hr:nth-child(2) {
+    animation: LogoAnimation 0.5s; 
+    animation-delay: 0.6s;
+    
+}
+
+.logoAnimated:hover .animate hr:nth-child(3) {
+    animation: LogoAnimation 0.5s; 
+    animation-delay: 0.7s;
+}
+
+.logoAnimated:hover .animate hr:nth-child(4) {
+    animation: LogoAnimation 0.5s; 
+    animation-delay: 0.8s;
+}
+
+.logoAnimated:hover .animate hr:nth-child(5) {
+    animation: LogoAnimation 0.5s;  
+    animation-delay: 0.9s;
+}
+
+.logoAnimated:hover .animate hr:nth-child(6) {
+    animation: LogoAnimation 0.5s;  
+    animation-delay: 0.9s;
+}
+
+
+@keyframes LogoAnimation {
+    
+    0%{
+        border: 0px solid #FFCB0E;
+        background-color: #FFCB0E;
+        width: 0px;
+        height: 1px;
+    }
+
+    50%{
+        border: 0.3px solid #FFCB0E;
+        background-color: #FFCB0E;
+        width: 5px;
+        height: 1px;
+    }
+
+    75%{
+        border: 0.3px solid #FFCB0E;
+        background-color: #FFCB0E;
+        width: 10px;
+        height: 1px;
+    }
+
+    100%{
+        border: 0.3px solid #FFCB0E;
+        background-color: #FFCB0E;
+        width: 0px;
+        height: 1px;
+    }
+
+    
+}
+
+.Cartaz{
+    border: 1px solid red;
+    width: 100%;
+    position: relative;
+    top: 300px;
+    width: 62%;
+    height: 2000px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: auto; 
+    gap: 20px;
+    padding: 30px;
+    border-radius: 6px;
+    background-color: #1F1F1F;
+    border-color: #1F1F1F   ;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+    margin: 0 auto;
+    gap: 50px;
+}
+
+
+
+.divCartaz{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 240px;
+    height: 350px;
+    background-color: #DFE0DC;
+    border: 1px solid #1F1F1F;
+    border-radius: 6px;
+    gap: 15px;
+    position: relative;
+    cursor: pointer;
+    grid-column: span 1;   
+    grid-row: span 1; 
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    text-align: center;
+}
+
+.divCartaz h3{
+    color: #1a1a1a;
+    font-size: 16px;
+}
+
+.divCartaz img{
+    width: 185px;
+    height: 260px;
+    border: transparent;
+    border-radius: 6px;
+}
+
+#cartazTitle{
+    position: relative;
+    top: 235px;
+    font-size: 1.3rem;
+    color: #DFE0DC;
 }

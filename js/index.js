@@ -7,7 +7,7 @@ const slider = document.querySelector('.slider');
 const inputSearch = document.querySelector('#searchMv');
 const leftBtn = document.getElementById('btnCarroselLeft');
 const rightBtn = document.getElementById('btnCarroselRight');
-
+const cartazFilmes = document.querySelector('.Cartaz');
 //EVENT 
 window.addEventListener('scroll', ()=>{
     if(window.scrollY > 100){
@@ -22,10 +22,10 @@ window.addEventListener('scroll', ()=>{
 async function carrosel(){
     const res = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc&api_key=${apiKey}`);
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
 
     if(data.results){
-       for (let index = 0; index < 5; index++) {
+       for (let index = 0; index < 12; index++) {
         const div = document.createElement('div');
         const title = document.createElement('h3');
         const poster = document.createElement('img');
@@ -54,5 +54,30 @@ async function carrosel(){
     })
 }
 
+async function Cartaz(){
+
+     const res = await fetch(`https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1&api_key=${apiKey}`);
+     const dataCartaz = await res.json();
+     console.log(dataCartaz);
+
+     if(dataCartaz.results){
+        dataCartaz.results.map((filmes)=>{
+            const div = document.createElement('div');
+            const title = document.createElement('h3');
+            const release = document.createElement('h4');
+            const img = document.createElement('img');
+
+            title.innerText = `${filmes.title}`;
+            release.innerText = `${filmes.release_date}`;
+            img.setAttribute('src', `https://image.tmdb.org/t/p/original/${filmes.poster_path}`);
+            div.classList.add('divCartaz');
+            div.append(img, title, release);
+            cartazFilmes.appendChild(div);
+         })
+     }
+
+}
+
 
 carrosel();
+Cartaz();

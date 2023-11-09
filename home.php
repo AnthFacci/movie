@@ -11,18 +11,33 @@
     <body>
         <div class="main">
             <header id="header">
-                <img id="logo" src="./assets/video-solid.svg" alt="#">
+                <div class="logoAnimated">
+                    <img id="logo" src="./assets/video-solid.svg" alt="#">
+                    <div class="animate">
+                        <hr>
+                        <hr>
+                        <hr>
+                        <hr>
+                    </div>
+                </div>    
                 <div class="search">
                     <input type="search" name="" id="searchMv">
                     <button id="btnSearch"> <i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </header>
             <div class="carrosel">
-                <h2 class="titleCarrosel">Most popular</h2><span id="fire"><i id="fogo" class="fa-solid fa-fire"></i></span>
                 <button id="btnCarroselRight"><i class="fa-solid fa-arrow-right"></i></button>
                 <button id="btnCarroselLeft"><i class="fa-solid fa-arrow-left"></i></button>
+                <div class="title">
+                <h2 class="titleCarrosel">Most popular</h2><span id="fire"><i id="fogo" class="fa-solid fa-fire"></i></span>
+                </div>
                 <div class="slider">
                 </div>
+            </div>
+            <div id="cartazTitle">
+                    <h2>Em cartaz</h2>
+                </div>    
+            <div class="Cartaz">
             </div>
         </div>
     </body>
