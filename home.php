@@ -34,6 +34,9 @@
                 <div class="slider">
                 </div>
             </div>
+            <!-- <div class="generos">
+                <h2>Em cartaz</h2>
+            </div> -->
             <div id="cartazTitle">
                     <h2>Em cartaz</h2>
                 </div>    

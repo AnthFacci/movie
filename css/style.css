@@ -46,7 +46,7 @@ html, body, .main{
     background-color: transparent;
     border-radius: 6px;
     padding: 5px;
-    color: #DFE0DC ;
+    color: #1F1F1F ;
 }
 
 .search{
@@ -123,10 +123,18 @@ html, body, .main{
     background-color: #1F1F1F;
     border: 1px solid #1F1F1F;
     border-radius: 6px;
-    gap: 15px;
+    gap: 20px;
     position: relative;
     cursor: pointer;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+.carrosselDiv > a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .carrosselDiv h3{
@@ -314,7 +322,6 @@ html, body, .main{
 }
 
 
-
 .divCartaz{
     display: flex;
     flex-direction: column;
@@ -335,6 +342,11 @@ html, body, .main{
     text-align: center;
 }
 
+.divCartaz > a{
+    text-decoration: none;
+    color: #1F1F1F;
+}
+
 .divCartaz h3{
     color: #1a1a1a;
     font-size: 16px;
@@ -353,3 +365,4 @@ html, body, .main{
     font-size: 1.3rem;
     color: #DFE0DC;
 }
+

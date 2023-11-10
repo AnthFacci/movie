@@ -8,6 +8,11 @@ const inputSearch = document.querySelector('#searchMv');
 const leftBtn = document.getElementById('btnCarroselLeft');
 const rightBtn = document.getElementById('btnCarroselRight');
 const cartazFilmes = document.querySelector('.Cartaz');
+const searchMv = document.querySelector('#searchMv');
+const btnSearch = document.querySelector('#btnSearch');
+// GET ID IN URL
+const urlID = new URLSearchParams(window.location.search);
+const id = urlID.get('id');
 //EVENT 
 window.addEventListener('scroll', ()=>{
     if(window.scrollY > 100){
@@ -29,10 +34,13 @@ async function carrosel(){
         const div = document.createElement('div');
         const title = document.createElement('h3');
         const poster = document.createElement('img');
-        title.innerText = data.results[index].original_title;
+        const ancor = document.createElement('a');
+        ancor.setAttribute('href', `./pageFilme.php?id=${data.results[index].id}`);
+        title.innerText = data.results[index].title;
         poster.setAttribute('src', `https://image.tmdb.org/t/p/original/${data.results[index].poster_path}`);
         div.classList.add('carrosselDiv');
-        div.append(poster, title);
+        ancor.append(poster, title);
+        div.appendChild(ancor);
         slider.appendChild(div);
        }
     }
@@ -66,18 +74,35 @@ async function Cartaz(){
             const title = document.createElement('h3');
             const release = document.createElement('h4');
             const img = document.createElement('img');
+            const ancor = document.createElement('a');
 
+            ancor.setAttribute('href', `./pageFilme.php?id=${filmes.id}`);
             title.innerText = `${filmes.title}`;
             release.innerText = `${filmes.release_date}`;
             img.setAttribute('src', `https://image.tmdb.org/t/p/original/${filmes.poster_path}`);
             div.classList.add('divCartaz');
-            div.append(img, title, release);
+            ancor.append(img, title, release);
+            div.append(ancor)
             cartazFilmes.appendChild(div);
          })
      }
 
 }
 
+
+if(!id){
+  btnSearch.addEventListener('click', ()=>{
+     const movie = searchMv.value;
+     console.log(movie)
+     if(movie !== ""){
+        window.location.href = `./search.php?movie=${movie}`;
+     }
+     else{
+        alert('Digite um valor válido!')
+     }
+
+  })
+}
 
 carrosel();
 Cartaz();
