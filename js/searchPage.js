@@ -16,6 +16,17 @@ let pageAtual = 1;
 searchInput.value = movie;
 document.title = `Pesquisa: ${movie}`;
 
+searchBtn.addEventListener('click', ()=>{
+    const movie = searchMv.value;
+    console.log(movie)
+    if(movie !== ""){
+        window.location.href = `./search.php?movie=${movie}`;
+}
+    else{
+        alert('Digite um valor válido!')
+}  
+})
+
 //FUNCTIONS
 
 async function searchFilme(movie){
@@ -122,3 +133,6 @@ async function searchFilme(movie){
 
 //CALL FUNCTIONS 
 searchFilme(movie);
+
+
+  

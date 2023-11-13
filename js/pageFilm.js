@@ -21,6 +21,7 @@ async function PageFilme(){
         //FETCH REQUEST
         const resTrailer = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=pt-BR&api_key=${apiKey}`);
         const dataTrailer = await resTrailer.json();
+        console.log(dataTrailer)
         const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=pt-BR`);
         const data = await res.json();
         console.log(data);
@@ -43,7 +44,9 @@ async function PageFilme(){
         spanSinopse.id = "spanSinop";
         //ATTRIBUTED VALUE
         document.title = `${data.title}`;
-        iframe.setAttribute('src', `https://www.youtube-nocookie.com/embed/${dataTrailer.results[0].key}`);
+        if(dataTrailer.results.length > 0){
+            iframe.setAttribute('src', `https://www.youtube-nocookie.com/embed/${dataTrailer.results[0].key}`);
+        }
         dataLancamento.innerText = "Data de lançamento: ";
         spanSinopse.innerText = "Sinopse: ";
         divTextos.classList.add('TextosDiv');
