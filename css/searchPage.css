@@ -1,0 +1,251 @@
+/* SET PATTERN  */
+*{
+    box-sizing: border-box;
+
+    padding: 0;
+    margin: 0;
+}
+
+html, body, .main{
+    width: 100%;
+    height: auto;
+}
+
+.main{
+    background-color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* HEADER */
+
+#header{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #1a1a1a;
+    background-color: #DFE0DC;
+    position: fixed;
+    z-index: 1;
+}
+
+#logo{
+    width: 30px;
+    height: 30px;
+    color: #330054;
+    cursor: pointer;
+}
+
+#header input[type=search]{
+    height: 20px;
+    border: 2px solid #330054;
+    background-color: transparent;
+    border-radius: 6px;
+    padding: 5px;
+    color: #1F1F1F ;
+}
+
+.search{
+    display: flex;
+    gap: 15px;
+}
+
+#btnSearch{
+    color: #330054;
+    background: transparent;
+    border: transparent;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    transform: scale(1.2); 
+    transition: .4s;
+}
+
+#btnSearch:hover{
+    transform: scale(1.4); 
+}
+
+.opaco{
+    opacity: 0.7;
+}
+
+
+.logoAnimated{
+    display: flex;
+    gap: 1px;
+}
+
+.animate{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    left: 588px;
+    top: 24px;
+    gap: 1px;
+    padding: 5px;
+}
+
+.animate hr{
+    border: 0px solid black;
+    left: 4px;
+    width: 0px;
+    height: 1px;
+    background-color: #1a1a1a;
+}
+
+.logoAnimated:hover .animate hr{
+     animation: LogoAnimation 1s;
+}
+
+.logoAnimated:hover .animate hr:nth-child(1) {
+    animation: LogoAnimation 0.5s;  
+    animation-delay: 0.5s;
+}
+
+.logoAnimated:hover .animate hr:nth-child(2) {
+    animation: LogoAnimation 0.5s; 
+    animation-delay: 0.6s;
+    
+}
+
+.logoAnimated:hover .animate hr:nth-child(3) {
+    animation: LogoAnimation 0.5s; 
+    animation-delay: 0.7s;
+}
+
+.logoAnimated:hover .animate hr:nth-child(4) {
+    animation: LogoAnimation 0.5s; 
+    animation-delay: 0.8s;
+}
+
+.logoAnimated:hover .animate hr:nth-child(5) {
+    animation: LogoAnimation 0.5s;  
+    animation-delay: 0.9s;
+}
+
+.logoAnimated:hover .animate hr:nth-child(6) {
+    animation: LogoAnimation 0.5s;  
+    animation-delay: 0.9s;
+}
+
+
+@keyframes LogoAnimation {
+    
+    0%{
+        border: 0px solid #FFCB0E;
+        background-color: #FFCB0E;
+        width: 0px;
+        height: 1px;
+    }
+
+    50%{
+        border: 0.3px solid #FFCB0E;
+        background-color: #FFCB0E;
+        width: 5px;
+        height: 1px;
+    }
+
+    75%{
+        border: 0.3px solid #FFCB0E;
+        background-color: #FFCB0E;
+        width: 10px;
+        height: 1px;
+    }
+
+    100%{
+        border: 0.3px solid #FFCB0E;
+        background-color: #FFCB0E;
+        width: 0px;
+        height: 1px;
+    }
+
+    
+}
+
+
+/* DIV FILMES */ 
+
+.mainFilmes{ 
+    width: auto;
+    height: auto;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 30px;
+    flex-wrap: wrap;
+    
+}
+
+
+.divFilmes{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 240px;
+    height: 360px;
+    background-color: #DFE0DC;
+    border: 1px solid #1F1F1F;
+    border-radius: 6px;
+    gap: 40px;
+    margin-top: 70px;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    text-align: center;
+    font-size: .8rem;
+}
+
+.divFilmes > a{
+    text-decoration: none;
+    color: #1F1F1F;
+}
+
+.divFilmes img{
+    width: 185px;
+    height: 260px;
+    border: transparent;
+    border-radius: 6px;
+}
+
+#title{
+    position: absolute;
+    height: 20PX;
+    text-align: center;
+    color: #DFE0DC;
+    font: 25px;
+}
+
+/* PAGINATION */
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    color: #DFE0DC;
+    margin-bottom: 20px;
+}
+
+.pagination > button{
+    width: 100px;
+    height: 25px;
+    border: 1px solid transparent;
+    background-color: #DFE0DC;
+    border-radius: 12px;
+    opacity: .7;
+    box-shadow: 0 1px 8px rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: .5s;
+}
+
+.pagination > button:hover{
+    opacity: 1;
+}

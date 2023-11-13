@@ -5,9 +5,15 @@ const apiKey = '1ae540fbee59a7ed38b1dc6cf272ae3d';
 const InfoFilmes = document.querySelector(".InfoFilmes");
 const sinopseHTML = document.querySelector(".sinopse");
 const trailer = document.querySelector(".trailer");
+const voltar = document.querySelector("#voltar");
 // GET ID IN URL
 const urlID = new URLSearchParams(window.location.search);
 const id = urlID.get('id');
+//EVENT 
+voltar.addEventListener('click', () => {
+    console.log('Botão Voltar Clicado');
+    window.history.back();
+});
 
 //Function
 async function PageFilme(){

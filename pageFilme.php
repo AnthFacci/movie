@@ -16,7 +16,7 @@
          <div class="trailer">
          </div>
          <div class="btn">
-            <button><a href="./home.php">Voltar</a></button>
+            <button><a id="voltar">Voltar</a></button>
          </div>
     </div>
 </body>

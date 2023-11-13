@@ -12,7 +12,7 @@
         <div class="main">
             <header id="header">
                 <div class="logoAnimated">
-                    <img id="logo" src="./assets/video-solid.svg" alt="#">
+                    <a href="./home.php"><img id="logo" src="./assets/video-solid.svg" alt="#"></a>
                     <div class="animate">
                         <hr>
                         <hr>
