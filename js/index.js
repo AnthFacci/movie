@@ -35,12 +35,36 @@ async function carrosel(){
         const title = document.createElement('h3');
         const poster = document.createElement('img');
         const ancor = document.createElement('a');
+        const btn = document.createElement('button');
+        const i = document.createElement('i');
+        i.className = 'fa-regular fa-heart heart';
+        //EVENT BTN LIKE
+        i.addEventListener('click', () => {
+            i.className = 'fa-solid fa-heart heart';  
+            var id = data.results[index].id;
+            var nm = data.results[index].title;
+            // FormData é uma classe nativa do js que tem metodos simples para criação de pares chave/valor
+            var formData = new FormData();
+            formData.append('idFilme', id);
+            formData.append('nmFilme', nm);
+          
+            fetch('home.php', {
+              method: 'POST',
+              body: formData
+            })
+            .then(response => response.text())
+            .catch(error => {
+              console.error('Erro ao enviar dados:', error);
+            });
+        });
+        //value attribution
         ancor.setAttribute('href', `./pageFilme.php?id=${data.results[index].id}`);
         title.innerText = data.results[index].title;
+        btn.classList.add('btnLike');
         poster.setAttribute('src', `https://image.tmdb.org/t/p/original/${data.results[index].poster_path}`);
         div.classList.add('carrosselDiv');
         ancor.append(poster, title);
-        div.appendChild(ancor);
+        div.append(ancor, i);
         slider.appendChild(div);
        }
     }
@@ -75,14 +99,35 @@ async function Cartaz(){
             const release = document.createElement('h4');
             const img = document.createElement('img');
             const ancor = document.createElement('a');
+            const i = document.createElement('i');
+            i.className = 'fa-regular fa-heart heartCartaz';
+            //EVENT BTN LIKE
+            i.addEventListener('click', () => {
+                i.className = 'fa-solid fa-heart heartCartaz';  
+                var id = filmes.id;
+                var nm = filmes.title;
 
+                //FROM DATA = maneira fácil de construir um conjunto de pares chave/valor
+                var formData = new FormData();
+                formData.append('idFilme', id);
+                formData.append('nmFilme', nm);
+              
+                fetch('home.php', {
+                  method: 'POST',
+                  body: formData
+                })
+                .then(response => response.text())
+                .catch(error => {
+                  console.error('Erro ao enviar dados:', error);
+                });
+            });
             ancor.setAttribute('href', `./pageFilme.php?id=${filmes.id}`);
             title.innerText = `${filmes.title}`;
             release.innerText = `${filmes.release_date}`;
             img.setAttribute('src', `https://image.tmdb.org/t/p/original/${filmes.poster_path}`);
             div.classList.add('divCartaz');
             ancor.append(img, title, release);
-            div.append(ancor)
+            div.append(ancor, i)
             cartazFilmes.appendChild(div);
          })
      }

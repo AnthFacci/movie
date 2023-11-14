@@ -118,7 +118,7 @@ html, body, .main{
     justify-content: center;
     align-items: center;
     width: 500px;
-    height: 450px;
+    height: 480px;
     padding: 15px;
     background-color: #1F1F1F;
     border: 1px solid #1F1F1F;
@@ -209,6 +209,38 @@ html, body, .main{
 .logoAnimated{
     display: flex;
     gap: 1px;
+}
+
+
+.heart{
+    position: absolute;
+    top: 495px;
+    width: 20px;
+    height: 20px;
+    font-size: 26px;
+    color: #CB1B00;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.heart:hover{
+    transform: scale(1.2); 
+}
+
+.heartCartaz{
+    position: absolute;
+    top: 370px;
+    width: 20px;
+    height: 20px;
+    font-size: 26px;
+    color: #CB1B00;
+    cursor: pointer;
+    transition: .4s;
+    z-index: 2;
+}
+
+.heartCartaz:hover{
+    transform: scale(1.2); 
 }
 
 .animate{
@@ -304,8 +336,8 @@ html, body, .main{
     width: 100%;
     position: relative;
     top: 300px;
-    width: 62%;
-    height: 2000px;
+    width: auto;
+    height: auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr; 
     grid-template-rows: auto; 
@@ -326,7 +358,7 @@ html, body, .main{
     justify-content: center;
     align-items: center;
     width: 240px;
-    height: 350px;
+    height: 405px;
     background-color: #DFE0DC;
     border: 1px solid #1F1F1F;
     border-radius: 6px;

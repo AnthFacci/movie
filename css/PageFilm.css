@@ -129,3 +129,20 @@ html, body, .main{
 .btn:hover{
     opacity: 1;
 }
+
+.heartPageFilm{
+    position: absolute;
+    top: 350px;
+    width: 20px;
+    height: 20px;
+    font-size: 26px;
+    color: #CB1B00;
+    background-color: #CB1B00;
+    cursor: pointer;
+    transition: .4s;
+    z-index: 2;
+}
+
+.heartPageFilm:hover{
+    transform: scale(1.2); 
+}

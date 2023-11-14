@@ -48,6 +48,28 @@ async function searchFilme(movie){
                 const title = document.createElement('h2');
                 const poster = document.createElement('img');
                 const a = document.createElement('a');
+                const i = document.createElement('i');
+                i.className = 'fa-regular fa-heart heartSearchPage';
+                //EVENT BTN LIKE
+                i.addEventListener('click', () => {
+                    i.className = 'fa-solid fa-heart heartSearchPage';  
+                    var id = filmes.id;
+                    var nm = filmes.title;
+
+                    //FROM DATA = maneira fácil de construir um conjunto de pares chave/valor
+                    var formData = new FormData();
+                    formData.append('idFilme', id);
+                    formData.append('nmFilme', nm);
+                
+                    fetch('home.php', {
+                    method: 'POST',
+                    body: formData
+                    })
+                    .then(response => response.text())
+                    .catch(error => {
+                    console.error('Erro ao enviar dados:', error);
+                    });
+                });
                 //assigning value
                 title.innerText = `${filmes.title}`;
                 poster.setAttribute('src', `https://image.tmdb.org/t/p/original/${filmes.poster_path}`);
@@ -56,7 +78,7 @@ async function searchFilme(movie){
                 // divMain.classList.add('divMainFilmes');
                 //append elements into div
                 a.append(poster, title);
-                div.appendChild(a);
+                div.append(a, i);
                 mainFilmes.appendChild(div);
             })
 
@@ -135,4 +157,4 @@ async function searchFilme(movie){
 searchFilme(movie);
 
 
-  
+//ERRO -> POR CONTA DE O ULTIMO ELEMENTO ANCESTRAL DO I SER A MAIN, TODOS ACABAM TENDO O MESMO POSICIONAMENTO.

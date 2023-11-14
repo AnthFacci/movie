@@ -1,3 +1,49 @@
+<?php
+    class favorito{
+        private $nmFilme;
+        private $idFilme;
+
+        public function __construct($nmFilme, $idFilme) {
+            $this->nmFilme = $nmFilme;
+            $this->idFilme = $idFilme;
+        }
+
+        public function favorita(){
+            session_start();
+            include_once('config.php');
+            
+            $email = $_SESSION['email'];
+            $senha = $_SESSION['senha'];
+
+            $requestUser = "SELECT id_user FROM usuarios WHERE 
+            email_user = '$email' AND senha_user = '$senha';";
+              
+            $resultado = mysqli_query($conexao, $requestUser);
+            if(mysqli_num_rows($resultado) > 0){
+                $userData = mysqli_fetch_assoc($resultado);
+                $userID = $userData['id_user'];
+            }
+
+            $query = "INSERT INTO filmesFavoritos(id_filme, nmFilme, id_user) VALUES
+            ('$this->idFilme', '$this->nmFilme', '$userID');";
+            
+            $res = mysqli_query($conexao, $query);
+        }
+
+        
+    }
+
+
+    if(isset($_POST['idFilme']) && isset($_POST['nmFilme'])){
+        
+        $fav = new favorito($_POST['nmFilme'], $_POST['idFilme']);
+        $fav->favorita();
+    }else{
+    
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

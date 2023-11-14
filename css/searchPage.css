@@ -189,7 +189,7 @@ html, body, .main{
     justify-content: space-between;
     align-items: center;
     width: 240px;
-    height: 380px;
+    height: 460px;
     background-color: #DFE0DC;
     border: 1px solid #1F1F1F;
     border-radius: 6px;
@@ -248,4 +248,20 @@ html, body, .main{
 
 .pagination > button:hover{
     opacity: 1;
+}
+
+.heartSearchPage{
+    position: absolute;
+    top: 615px;
+    width: 20px;
+    height: 20px;
+    font-size: 26px;
+    color: #CB1B00;
+    cursor: pointer;
+    transition: .4s;
+    z-index: 2;
+}
+
+.heartSearchPage:hover{
+    transform: scale(1.2); 
 }

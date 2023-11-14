@@ -1,2 +1,24 @@
 <i class="fa-regular fa-heart"></i> - Coração vazio.
 <i class="fa-solid fa-heart"></i> - Coração preenchido.
+
+//event i 
+  i.addEventListener('click', async ()=>{
+          console.log('teste')
+         const idFilme = { 
+           id: data.results[index].id
+         }
+
+          fetch('./home.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(idFilme)
+          }).then(response => response.json())
+          .then(data => {
+            console.log('Resposta do PHP:', data);
+          })
+          .catch(error =>{
+            console.error('Erro ao enviar requisição:', error);
+          });
+        });

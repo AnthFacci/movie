@@ -38,10 +38,33 @@ async function PageFilme(){
         const divLancamento = document.createElement('div');
         const divSinopse = document.createElement('div');
         const iframe = document.createElement('iframe');
+        const i = document.createElement('i');
         // CLASS ADD
         divSinopse.classList.add('divSinopse');
         divLancamento.classList.add('divLancamento');
         spanSinopse.id = "spanSinop";
+        i.className = 'fa-regular fa-heart heartPageFilm';
+        console.log(i)
+          //EVENT BTN LIKE
+          i.addEventListener('click', () => {
+            i.className = 'fa-solid fa-heart heartPageFilm';  
+            console.log(i);
+            var id = data.id;
+            var nm = data.title;
+            // FormData é uma classe nativa do js que tem metodos simples para criação de pares chave/valor
+            var formData = new FormData();
+            formData.append('idFilme', id);
+            formData.append('nmFilme', nm);
+          
+            fetch('pageFilme.php', {
+              method: 'POST',
+              body: formData
+            })
+            .then(response => response.text())
+            .catch(error => {
+              console.error('Erro ao enviar dados:', error);
+            });
+        });
         //ATTRIBUTED VALUE
         document.title = `${data.title}`;
         if(dataTrailer.results.length > 0){
@@ -60,7 +83,7 @@ async function PageFilme(){
         Title.append(spanFilme, divLancamento);
         divSinopse.append(spanSinopse, sinopse);
         divTextos.append(Title);
-        InfoFilmes.append(cartaz, divTextos);
+        InfoFilmes.append(cartaz, divTextos, i);
         InfoFilmes.style.background = `url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`;
         InfoFilmes.style.backgroundSize = 'cover';
         sinopseHTML.append(divSinopse);
