@@ -49,7 +49,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>EdMovie - Home</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,14 +62,9 @@
             <header id="header">
                 <div class="logoAnimated">
                     <a href="./home.php"><img id="logo" src="./assets/video-solid.svg" alt="#"></a>
-                    <div class="animate">
-                        <hr>
-                        <hr>
-                        <hr>
-                        <hr>
-                    </div>
-                </div>    
+                </div>   
                 <div class="search">
+                    <a href="./listFav.php"><i class="fa-solid fa-list-ul favList" id="favList"></i></a>
                     <input type="search" name="" id="searchMv">
                     <button id="btnSearch"> <i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
@@ -83,9 +78,6 @@
                 <div class="slider">
                 </div>
             </div>
-            <!-- <div class="generos">
-                <h2>Em cartaz</h2>
-            </div> -->
             <div id="cartazTitle">
                     <h2>Em cartaz</h2>
                 </div>    

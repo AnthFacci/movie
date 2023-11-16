@@ -39,7 +39,7 @@ async function searchFilme(movie){
      if(data.results){
         if(searchInput !== ""){
             searchInput.value = "";
-            if(totalResults <= 4){
+            if(totalResults <= 5){
                 mainDiv.style.height = '100vh';
               }
             data.results.map((filmes)=>{

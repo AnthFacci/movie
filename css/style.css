@@ -73,6 +73,18 @@ html, body, .main{
     opacity: 0.7;
 }
 
+.favList{
+    padding-right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #330054;
+    transition: .4s;
+}
+
+.favList:hover{
+    transform: scale(1.1); 
+}
+
 /* CARROSSEL */
 
 .carrosel{
@@ -211,6 +223,9 @@ html, body, .main{
     gap: 1px;
 }
 
+.logoAnimated:hover{
+    animation: moverRotacionar .6s;
+}
 
 .heart{
     position: absolute;
@@ -229,7 +244,7 @@ html, body, .main{
 
 .heartCartaz{
     position: absolute;
-    top: 370px;
+    top: 400px;
     width: 20px;
     height: 20px;
     font-size: 26px;
@@ -243,93 +258,21 @@ html, body, .main{
     transform: scale(1.2); 
 }
 
-.animate{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    left: 588px;
-    top: 24px;
-    gap: 1px;
-    padding: 5px;
-}
 
-.animate hr{
-    border: 0px solid black;
-    left: 4px;
-    width: 0px;
-    height: 1px;
-    background-color: #1a1a1a;
-}
-
-.logoAnimated:hover .animate hr{
-     animation: LogoAnimation 1s;
-}
-
-.logoAnimated:hover .animate hr:nth-child(1) {
-    animation: LogoAnimation 0.5s;  
-    animation-delay: 0.5s;
-}
-
-.logoAnimated:hover .animate hr:nth-child(2) {
-    animation: LogoAnimation 0.5s; 
-    animation-delay: 0.6s;
-    
-}
-
-.logoAnimated:hover .animate hr:nth-child(3) {
-    animation: LogoAnimation 0.5s; 
-    animation-delay: 0.7s;
-}
-
-.logoAnimated:hover .animate hr:nth-child(4) {
-    animation: LogoAnimation 0.5s; 
-    animation-delay: 0.8s;
-}
-
-.logoAnimated:hover .animate hr:nth-child(5) {
-    animation: LogoAnimation 0.5s;  
-    animation-delay: 0.9s;
-}
-
-.logoAnimated:hover .animate hr:nth-child(6) {
-    animation: LogoAnimation 0.5s;  
-    animation-delay: 0.9s;
-}
-
-
-@keyframes LogoAnimation {
-    
-    0%{
-        border: 0px solid #FFCB0E;
-        background-color: #FFCB0E;
-        width: 0px;
-        height: 4px;
+@keyframes moverRotacionar {
+    0% {
+      transform: translateX(0) rotate(0deg);
     }
 
-    50%{
-        border: 0.3px solid #FFCB0E;
-        background-color: #FFCB0E;
-        width: 5px;
-        height: 4px;
-    }
-
-    75%{
-        border: 0.3px solid #FFCB0E;
-        background-color: #FFCB0E;
-        width: 10px;
-        height: 4px;
+    50% {
+      transform: translateX(0) rotate(-50deg);
     }
 
     100%{
-        border: 0.3px solid #FFCB0E;
-        background-color: #FFCB0E;
-        width: 0px;
-        height: 4px;
+        transform: translateX(0) rotate(0deg);
     }
-
-    
 }
+
 
 .Cartaz{
     border: 1px solid red;
@@ -358,7 +301,7 @@ html, body, .main{
     justify-content: center;
     align-items: center;
     width: 240px;
-    height: 405px;
+    height: 435px;
     background-color: #DFE0DC;
     border: 1px solid #1F1F1F;
     border-radius: 6px;
@@ -396,3 +339,22 @@ html, body, .main{
     color: #DFE0DC;
 }
 
+::-webkit-scrollbar {
+    width: 12px; 
+  }
+  
+
+  ::-webkit-scrollbar-track {
+    background-color: #1F1F1F; 
+    color: #1a1a1a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #888; 
+    border-radius: 6px; 
+    transition: .4s;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555; 
+  }

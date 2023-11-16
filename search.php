@@ -59,15 +59,9 @@
         <div class="main">
             <header id="header">
                 <div class="logoAnimated">
-                    <a href="./home.php"><img id="logo" src="./assets/video-solid.svg" alt="#"></a>
-                    <div class="animate">
-                        <hr>
-                        <hr>
-                        <hr>
-                        <hr>
-                    </div>
                 </div>    
                 <div class="search">
+                    <a href="./listFav.php"><i class="fa-solid fa-list-ul favList" id="favList"></i></a>
                     <input type="search" name="" id="searchMv">
                     <button id="btnSearch"> <i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>

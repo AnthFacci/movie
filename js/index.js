@@ -10,6 +10,7 @@ const rightBtn = document.getElementById('btnCarroselRight');
 const cartazFilmes = document.querySelector('.Cartaz');
 const searchMv = document.querySelector('#searchMv');
 const btnSearch = document.querySelector('#btnSearch');
+const favList = document.querySelector('#favList');
 // GET ID IN URL
 const urlID = new URLSearchParams(window.location.search);
 const id = urlID.get('id');
