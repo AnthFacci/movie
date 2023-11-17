@@ -224,7 +224,7 @@ html, body, .main{
 }
 
 .logoAnimated:hover{
-    animation: moverRotacionar .6s;
+    animation: moverRotacionar .9s;
 }
 
 .heart{

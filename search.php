@@ -1,4 +1,5 @@
 <?php
+    session_start();
     class favorito{
         private $nmFilme;
         private $idFilme;
@@ -9,7 +10,6 @@
         }
 
         public function favorita(){
-            session_start();
             include_once('config.php');
             
             $email = $_SESSION['email'];
@@ -29,7 +29,26 @@
             
             $res = mysqli_query($conexao, $query);
         }
+         
+        public function removeFav($nmFilmeRemove, $idFilmeRemove){
+          include_once('config.php');
+          $email = $_SESSION['email'];
+          $senha = $_SESSION['senha'];
 
+          $requestUser = "SELECT id_user FROM usuarios WHERE 
+          email_user = '$email' AND senha_user = '$senha';";
+            
+          $resultado = mysqli_query($conexao, $requestUser);
+          if(mysqli_num_rows($resultado) > 0){
+              $userData = mysqli_fetch_assoc($resultado);
+              $userID = $userData['id_user'];
+          }
+
+          $res = "DELETE FROM filmesFavoritos WHERE id_user = '$userID' AND id_filme = '$idFilmeRemove'
+          AND nmFilme = '$nmFilmeRemove';";
+
+          $result = $conexao->query($res);
+        }
         
     }
 
@@ -38,6 +57,12 @@
         
         $fav = new favorito($_POST['nmFilme'], $_POST['idFilme']);
         $fav->favorita();
+
+    }elseif(isset($_POST['idFilmeRemove']) && isset($_POST['nmFilmeRemove'])){
+        $fav = new favorito($_POST['nmFilme'], $_POST['idFilme']);
+        $fav->removeFav($_POST['nmFilmeRemove'], $_POST['idFilmeRemove']);
+    }else{
+    
     }
 ?>
 
@@ -59,7 +84,8 @@
         <div class="main">
             <header id="header">
                 <div class="logoAnimated">
-                </div>    
+                    <a href="./home.php"><img id="logo" src="./assets/video-solid.svg" alt="#"></a>
+                </div>   
                 <div class="search">
                     <a href="./listFav.php"><i class="fa-solid fa-list-ul favList" id="favList"></i></a>
                     <input type="search" name="" id="searchMv">

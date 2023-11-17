@@ -21,9 +21,11 @@ async function PageFilme(){
         //FETCH REQUEST
         const resTrailer = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=pt-BR&api_key=${apiKey}`);
         const dataTrailer = await resTrailer.json();
-        console.log(dataTrailer)
         const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=pt-BR`);
         const data = await res.json();
+        const dataF = localStorage.getItem('favList');
+        const dataFav = JSON.parse(dataF);
+        console.log(dataTrailer)
         console.log(data);
         console.log(dataTrailer);
         //VARIAVEIS
@@ -44,26 +46,52 @@ async function PageFilme(){
         divLancamento.classList.add('divLancamento');
         spanSinopse.id = "spanSinop";
         i.className = 'fa-regular fa-heart heartPageFilm';
-        console.log(i)
+        if(dataFav != null) {
+        for (let ind = 0; ind < dataFav.length; ind++) {
+          if(dataFav[ind] == data.id){
+            i.className = 'fa-solid fa-heart heartPageFilm';
+        }
+      }
+      }
           //EVENT BTN LIKE
           i.addEventListener('click', () => {
-            i.className = 'fa-solid fa-heart heartPageFilm';  
-            console.log(i);
-            var id = data.id;
-            var nm = data.title;
-            // FormData é uma classe nativa do js que tem metodos simples para criação de pares chave/valor
-            var formData = new FormData();
-            formData.append('idFilme', id);
-            formData.append('nmFilme', nm);
-          
-            fetch('pageFilme.php', {
-              method: 'POST',
-              body: formData
-            })
-            .then(response => response.text())
-            .catch(error => {
-              console.error('Erro ao enviar dados:', error);
-            });
+            if(i.className === 'fa-solid fa-heart heartPageFilm'){
+              i.className = 'fa-regular fa-heart heartPageFilm';
+              var idRemove = data.id;
+              var nmRemove = data.title;
+
+              // FormData é uma classe nativa do js que tem metodos simples para criação de pares chave/valor
+              var formDataRemove = new FormData();
+              formDataRemove.append('idFilmeRemove', idRemove);
+              formDataRemove.append('nmFilmeRemove', nmRemove);
+
+              fetch('pageFilme.php', {
+                method: 'POST',
+                body: formDataRemove
+              })
+              .then(response => response.text())
+              .catch(error => {
+                console.error('Erro ao enviar dados:', error);
+              });
+            }else{
+              i.className = 'fa-solid fa-heart heartPageFilm';  
+              console.log(i);
+              var id = data.id;
+              var nm = data.title;
+              // FormData é uma classe nativa do js que tem metodos simples para criação de pares chave/valor
+              var formData = new FormData();
+              formData.append('idFilme', id);
+              formData.append('nmFilme', nm);
+            
+              fetch('pageFilme.php', {
+                method: 'POST',
+                body: formData
+              })
+              .then(response => response.text())
+              .catch(error => {
+                console.error('Erro ao enviar dados:', error);
+              });
+            }
         });
         //ATTRIBUTED VALUE
         document.title = `${data.title}`;

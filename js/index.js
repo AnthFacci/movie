@@ -15,6 +15,8 @@ const favList = document.querySelector('#favList');
 const urlID = new URLSearchParams(window.location.search);
 const id = urlID.get('id');
 //EVENT 
+
+
 window.addEventListener('scroll', ()=>{
     if(window.scrollY > 100){
         header.classList.add('opaco');
@@ -28,6 +30,8 @@ window.addEventListener('scroll', ()=>{
 async function carrosel(){
     const res = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=pt-BR&page=1&sort_by=popularity.desc&api_key=${apiKey}`);
     const data = await res.json();
+    const dataF = localStorage.getItem('favList');
+    const dataFav = JSON.parse(dataF);
     // console.log(data);
 
     if(data.results){
@@ -39,9 +43,36 @@ async function carrosel(){
         const btn = document.createElement('button');
         const i = document.createElement('i');
         i.className = 'fa-regular fa-heart heart';
+        if(dataFav != null) {
+          for (let ind = 0; ind < dataFav.length; ind++) {
+              if (dataFav[ind] == data.results[index].id) {
+                  i.className = 'fa-solid fa-heart heart';
+              }
+          }
+      }
         //EVENT BTN LIKE
         i.addEventListener('click', () => {
+          if(i.className === 'fa-solid fa-heart heart'){
+            i.className = 'fa-regular fa-heart heart';
+            var idRemove = data.results[index].id;
+            var nmRemove = data.results[index].title;
+
+            // FormData é uma classe nativa do js que tem metodos simples para criação de pares chave/valor
+            var formDataRemove = new FormData();
+            formDataRemove.append('idFilmeRemove', idRemove);
+            formDataRemove.append('nmFilmeRemove', nmRemove);
+
+            fetch('home.php', {
+              method: 'POST',
+              body: formDataRemove
+            })
+            .then(response => response.text())
+            .catch(error => {
+              console.error('Erro ao enviar dados:', error);
+            });
+          }else{
             i.className = 'fa-solid fa-heart heart';  
+            console.log(i);
             var id = data.results[index].id;
             var nm = data.results[index].title;
             // FormData é uma classe nativa do js que tem metodos simples para criação de pares chave/valor
@@ -57,7 +88,8 @@ async function carrosel(){
             .catch(error => {
               console.error('Erro ao enviar dados:', error);
             });
-        });
+          }
+      });
         //value attribution
         ancor.setAttribute('href', `./pageFilme.php?id=${data.results[index].id}`);
         title.innerText = data.results[index].title;
@@ -91,6 +123,9 @@ async function Cartaz(){
 
      const res = await fetch(`https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1&api_key=${apiKey}`);
      const dataCartaz = await res.json();
+     const data = localStorage.getItem('favList');
+     const dataFav = JSON.parse(data);
+     console.log(dataFav);
      console.log(dataCartaz);
 
      if(dataCartaz.results){
@@ -102,13 +137,39 @@ async function Cartaz(){
             const ancor = document.createElement('a');
             const i = document.createElement('i');
             i.className = 'fa-regular fa-heart heartCartaz';
+            if(dataFav != null) {
+              for (let ind = 0; ind < dataFav.length; ind++) {
+                  if (dataFav[ind] == filmes.id) {
+                      i.className = 'fa-solid fa-heart heartCartaz';
+                  }
+              }
+          }
             //EVENT BTN LIKE
             i.addEventListener('click', () => {
+              if(i.className === 'fa-solid fa-heart heartCartaz'){
+                i.className = 'fa-regular fa-heart heartCartaz';
+                var idRemove = filmes.id;
+                var nmRemove = filmes.title;
+  
+                // FormData é uma classe nativa do js que tem metodos simples para criação de pares chave/valor
+                var formDataRemove = new FormData();
+                formDataRemove.append('idFilmeRemove', idRemove);
+                formDataRemove.append('nmFilmeRemove', nmRemove);
+  
+                fetch('home.php', {
+                  method: 'POST',
+                  body: formDataRemove
+                })
+                .then(response => response.text())
+                .catch(error => {
+                  console.error('Erro ao enviar dados:', error);
+                });
+              }else{
                 i.className = 'fa-solid fa-heart heartCartaz';  
+                console.log(i);
                 var id = filmes.id;
                 var nm = filmes.title;
-
-                //FROM DATA = maneira fácil de construir um conjunto de pares chave/valor
+                // FormData é uma classe nativa do js que tem metodos simples para criação de pares chave/valor
                 var formData = new FormData();
                 formData.append('idFilme', id);
                 formData.append('nmFilme', nm);
@@ -121,7 +182,10 @@ async function Cartaz(){
                 .catch(error => {
                   console.error('Erro ao enviar dados:', error);
                 });
-            });
+              }
+          });
+         
+
             ancor.setAttribute('href', `./pageFilme.php?id=${filmes.id}`);
             title.innerText = `${filmes.title}`;
             release.innerText = `${filmes.release_date}`;

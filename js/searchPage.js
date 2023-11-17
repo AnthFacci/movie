@@ -33,8 +33,10 @@ async function searchFilme(movie){
 
      const res = await fetch(`https://api.themoviedb.org/3/search/movie?query=${movie}&language=pt-BR&page=${pageAtual}&api_key=${apiKey}`);
      const data = await res.json();
-     console.log(data);
      const totalResults = parseInt(data.total_results);
+     const dataF = localStorage.getItem('favList');
+     const dataFav = JSON.parse(dataF);
+     console.log(data);
      console.log(totalResults);
      if(data.results){
         if(searchInput !== ""){
@@ -50,25 +52,52 @@ async function searchFilme(movie){
                 const a = document.createElement('a');
                 const i = document.createElement('i');
                 i.className = 'fa-regular fa-heart heartSearchPage';
+                if(dataFav != null) {
+                for (let ind = 0; ind < dataFav.length; ind++) {
+                     if(dataFav[ind] == filmes.id){
+                        i.className = 'fa-solid fa-heart heartSearchPage';
+                     } 
+                }
+              }
                 //EVENT BTN LIKE
                 i.addEventListener('click', () => {
-                    i.className = 'fa-solid fa-heart heartSearchPage';  
-                    var id = filmes.id;
-                    var nm = filmes.title;
-
-                    //FROM DATA = maneira fácil de construir um conjunto de pares chave/valor
-                    var formData = new FormData();
-                    formData.append('idFilme', id);
-                    formData.append('nmFilme', nm);
-                
-                    fetch('home.php', {
-                    method: 'POST',
-                    body: formData
-                    })
-                    .then(response => response.text())
-                    .catch(error => {
-                    console.error('Erro ao enviar dados:', error);
-                    });
+                    if(i.className === 'fa-solid fa-heart heartSearchPage'){
+                      i.className = 'fa-regular fa-heart heartSearchPage';
+                      var idRemove = filmes.id;
+                      var nmRemove = filmes.title;
+        
+                      // FormData é uma classe nativa do js que tem metodos simples para criação de pares chave/valor
+                      var formDataRemove = new FormData();
+                      formDataRemove.append('idFilmeRemove', idRemove);
+                      formDataRemove.append('nmFilmeRemove', nmRemove);
+        
+                      fetch('search.php', {
+                        method: 'POST',
+                        body: formDataRemove
+                      })
+                      .then(response => response.text())
+                      .catch(error => {
+                        console.error('Erro ao enviar dados:', error);
+                      });
+                    }else{
+                      i.className = 'fa-solid fa-heart heartSearchPage';  
+                      console.log(i);
+                      var id = filmes.id;
+                      var nm = filmes.title;
+                      // FormData é uma classe nativa do js que tem metodos simples para criação de pares chave/valor
+                      var formData = new FormData();
+                      formData.append('idFilme', id);
+                      formData.append('nmFilme', nm);
+                    
+                      fetch('search.php', {
+                        method: 'POST',
+                        body: formData
+                      })
+                      .then(response => response.text())
+                      .catch(error => {
+                        console.error('Erro ao enviar dados:', error);
+                      });
+                    }
                 });
                 //assigning value
                 title.innerText = `${filmes.title}`;
@@ -92,23 +121,69 @@ async function searchFilme(movie){
                     mainFilmes.innerText = '';
                     data.results.map((filmes)=>{
                         //createElements
-                        const titleResults = document.createElement('h2');
                         const div = document.createElement('div');
                         const title = document.createElement('h2');
                         const poster = document.createElement('img');
                         const a = document.createElement('a');
+                        const i = document.createElement('i');
+                        i.className = 'fa-regular fa-heart heartSearchPage';
+                        if(dataFav != null) {
+                        for (let ind = 0; ind < dataFav.length; ind++) {
+                             if(dataFav[ind] == filmes.id){
+                                i.className = 'fa-solid fa-heart heartSearchPage';
+                             } 
+                        }
+                      }
+                        //EVENT BTN LIKE
+                        i.addEventListener('click', () => {
+                            if(i.className === 'fa-solid fa-heart heartSearchPage'){
+                              i.className = 'fa-regular fa-heart heartSearchPage';
+                              var idRemove = filmes.id;
+                              var nmRemove = filmes.title;
+                
+                              // FormData é uma classe nativa do js que tem metodos simples para criação de pares chave/valor
+                              var formDataRemove = new FormData();
+                              formDataRemove.append('idFilmeRemove', idRemove);
+                              formDataRemove.append('nmFilmeRemove', nmRemove);
+                
+                              fetch('search.php', {
+                                method: 'POST',
+                                body: formDataRemove
+                              })
+                              .then(response => response.text())
+                              .catch(error => {
+                                console.error('Erro ao enviar dados:', error);
+                              });
+                            }else{
+                              i.className = 'fa-solid fa-heart heartSearchPage';  
+                              console.log(i);
+                              var id = filmes.id;
+                              var nm = filmes.title;
+                              // FormData é uma classe nativa do js que tem metodos simples para criação de pares chave/valor
+                              var formData = new FormData();
+                              formData.append('idFilme', id);
+                              formData.append('nmFilme', nm);
+                            
+                              fetch('search.php', {
+                                method: 'POST',
+                                body: formData
+                              })
+                              .then(response => response.text())
+                              .catch(error => {
+                                console.error('Erro ao enviar dados:', error);
+                              });
+                            }
+                        });
                         //assigning value
                         title.innerText = `${filmes.title}`;
                         poster.setAttribute('src', `https://image.tmdb.org/t/p/original/${filmes.poster_path}`);
                         a.setAttribute('href', `/DBFILMES/pageFilme.php?id=${filmes.id}`);
                         div.classList.add('divFilmes');
-                        titleResults.innerText = "Resultados:";
-                        titleResults.id = "title";
                         // divMain.classList.add('divMainFilmes');
                         //append elements into div
                         a.append(poster, title);
-                        div.appendChild(a);
-                        mainFilmes.append(titleResults, div);
+                        div.append(a, i);
+                        mainFilmes.appendChild(div);
                     })
                     currentPage.innerText = pageAtual;
                 }
@@ -131,6 +206,55 @@ async function searchFilme(movie){
                         const title = document.createElement('h2');
                         const poster = document.createElement('img');
                         const a = document.createElement('a');
+                        const i = document.createElement('i');
+                        i.className = 'fa-regular fa-heart heartSearchPage';
+                        if(dataFav != null) {
+                        for (let ind = 0; ind < dataFav.length; ind++) {
+                             if(dataFav[ind] == filmes.id){
+                                i.className = 'fa-solid fa-heart heartSearchPage';
+                             } 
+                        }
+                      }
+                        //EVENT BTN LIKE
+                        i.addEventListener('click', () => {
+                            if(i.className === 'fa-solid fa-heart heartSearchPage'){
+                              i.className = 'fa-regular fa-heart heartSearchPage';
+                              var idRemove = filmes.id;
+                              var nmRemove = filmes.title;
+                
+                              // FormData é uma classe nativa do js que tem metodos simples para criação de pares chave/valor
+                              var formDataRemove = new FormData();
+                              formDataRemove.append('idFilmeRemove', idRemove);
+                              formDataRemove.append('nmFilmeRemove', nmRemove);
+                
+                              fetch('search.php', {
+                                method: 'POST',
+                                body: formDataRemove
+                              })
+                              .then(response => response.text())
+                              .catch(error => {
+                                console.error('Erro ao enviar dados:', error);
+                              });
+                            }else{
+                              i.className = 'fa-solid fa-heart heartSearchPage';  
+                              console.log(i);
+                              var id = filmes.id;
+                              var nm = filmes.title;
+                              // FormData é uma classe nativa do js que tem metodos simples para criação de pares chave/valor
+                              var formData = new FormData();
+                              formData.append('idFilme', id);
+                              formData.append('nmFilme', nm);
+                            
+                              fetch('search.php', {
+                                method: 'POST',
+                                body: formData
+                              })
+                              .then(response => response.text())
+                              .catch(error => {
+                                console.error('Erro ao enviar dados:', error);
+                              });
+                            }
+                        });
                         //assigning value
                         title.innerText = `${filmes.title}`;
                         poster.setAttribute('src', `https://image.tmdb.org/t/p/original/${filmes.poster_path}`);
@@ -139,7 +263,7 @@ async function searchFilme(movie){
                         // divMain.classList.add('divMainFilmes');
                         //append elements into div
                         a.append(poster, title);
-                        div.appendChild(a);
+                        div.append(a, i);
                         mainFilmes.appendChild(div);
                     })
                     currentPage.innerText = pageAtual;
