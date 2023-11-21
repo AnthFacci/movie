@@ -1,5 +1,4 @@
 <?php
-    namespace lista;
 
     class getFav{
 
@@ -45,8 +44,5 @@
         
 
     }
-
-    $get = new getFav();
-    $get->getInfo();
 
 ?>

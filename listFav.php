@@ -32,6 +32,9 @@
                          $this->idFilme[] = $id_filme;
                     }
                     $dadosId = json_encode($this->idFilme);
+                }else{
+                    $this->idFilme = [];
+                    $dadosId = json_encode($this->idFilme);
                 }
             }  
 
@@ -47,6 +50,26 @@
 
     $get = new getFav();
     $get->getInfo();
+
+     class getName{
+        public function getNM(){
+            include('config.php');
+            $email = $_SESSION['email'];
+            $senha = $_SESSION['senha'];
+            $requestUser = "SELECT nm_user FROM usuarios WHERE 
+          email_user = '$email' AND senha_user = '$senha';";
+          $resultado = mysqli_query($conexao, $requestUser);
+          if(mysqli_num_rows($resultado) > 0){
+              $userData = mysqli_fetch_assoc($resultado);
+              $userNM = $userData['nm_user'];
+          }
+
+          return $userNM;
+        }
+    }
+     
+    $getNm = new getName();
+    $Nm = $getNm->getNM(); 
 
 ?>
 
@@ -74,6 +97,9 @@
                         <a href="./listFav.php"><i class="fa-solid fa-list-ul favList" id="favList"></i></a>
                         <input type="search" name="" id="searchMv">
                         <button id="btnSearch"> <i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                    <div class="user">
+                        <span>Bem-vindo novamente, <span><?php echo ucfirst($Nm); ?></span></span>
                     </div>
              </header>
              <div class="list">

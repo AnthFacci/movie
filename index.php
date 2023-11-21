@@ -24,8 +24,10 @@
      }
 
  }   
-     $cadastrando = new cadastro($_POST['nome_cad'], $_POST['email_cad'], $_POST['senha_cad']);
-     $cadastrando->cadastrar();
+    if(isset($_POST['nome_cad']) && isset($_POST['email_cad']) && isset($_POST['senha_cad'])){
+      $cadastrando = new cadastro($_POST['nome_cad'], $_POST['email_cad'], $_POST['senha_cad']);
+      $cadastrando->cadastrar();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +50,7 @@
           <h1>Login</h1> 
           <p> 
             <label for="email_login">Seu e-mail</label>
-            <input id="email_login" name="email_login" required="required" type="text" placeholder="ex. contato@htmlecsspro.com"/>
+            <input id="email_login" name="email_login" required="required" type="text" placeholder="ex. contato@gmail.com"/>
           </p>
            
           <p> 
@@ -84,7 +86,7 @@
            
           <p> 
             <label for="email_cad">Seu e-mail</label>
-            <input id="email_cad" name="email_cad" required="required" type="email" placeholder="contato@htmlecsspro.com"/> 
+            <input id="email_cad" name="email_cad" required="required" type="email" placeholder="contato@gmail.com"/> 
           </p>
            
           <p> 

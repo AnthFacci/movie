@@ -5,6 +5,13 @@
     font-family: Arial,sans-serif;
   }
 
+  
+
+  body, .container{
+    background-color: #1a1a1a;
+    height: 80vh;
+    width: 100%;
+  }
 
   /* remove a linha dos links */
   a{
@@ -21,12 +28,13 @@
     width: 500px;
     min-height: 560px;    
     margin: 0px auto;
+    top: 30%;
     position: relative;   
   }
 
   h1{
     font-size: 48px;
-    color: #066a75;
+    color: #1a1a1a;
     padding: 2px 0 10px 0;
     font-family: Arial,sans-serif;
     font-weight: bold;
@@ -53,7 +61,7 @@
   }
    
   label{
-    color: #405c60;
+    color: #1a1a1a;
     position: relative;
   }
 
@@ -94,9 +102,9 @@
   input[type="submit"]{
     width: 100%!important;
     cursor: pointer;  
-    background: rgb(61, 157, 179);
+    background: #1F1F1F;
     padding: 8px 5px;
-    color: #fff;
+    color: #DFE0DC;
     font-size: 20px;  
     border: 1px solid #fff;   
     margin-bottom: 10px;  
@@ -110,13 +118,13 @@
    
   /*estilo do botão submit no hover */
   input[type="submit"]:hover{
-    background: #4ab3c6;
+    background: #1a1a1a;
   }
 
   .link{
     position: absolute;
     background: #e1eaeb;
-    color: #7f7c7c;
+    color: #1a1a1a;
     left: 0px;
     height: 20px;
     width: 440px;
@@ -133,7 +141,7 @@
     font-weight: bold;
     background: #f7f8f1;
     padding: 6px;
-    color: rgb(29, 162, 193);
+    color: #1a1a1a;
     margin-left: 10px;
     border: 1px solid #cbd518;
    
@@ -145,7 +153,7 @@
   }
    
   .link a:hover {
-    color: #39bfd7;
+    color: #1F1F1F;
     background: #f7f7f7;
     border: 1px solid #4ab3c6;
   }
@@ -157,7 +165,7 @@
   width: 88%;   
   padding: 18px 6% 60px 6%;
   margin: 0 0 35px 0;
-  background: #f7f7f7;
+  background: #DFE0DC;
   border: 1px solid rgba(147, 184, 189,0.8);
    
   -webkit-box-shadow: 5px;
