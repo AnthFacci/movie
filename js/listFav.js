@@ -79,14 +79,14 @@ if(favListItens){
         }
    }else {
     const span = document.createElement('span');
-    span.innerText = 'Sua lista de favoritos está vazia.';
+    span.innerText = 'Sua lista de favoritos está vazia :( ';
     span.id = "span";
     cartazFilmes.appendChild(span);
     mainDiv.style.height = '100vh';
 }
 }else{
     const span = document.createElement('span');
-    span.innerText = 'Sua lista de favoritos está vazia.';
+    span.innerText = 'Sua lista de favoritos está vazia :(';
     span.id = "span";
     cartazFilmes.appendChild(span);
     mainDiv.style.height = '100vh';
