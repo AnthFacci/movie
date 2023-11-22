@@ -7,7 +7,7 @@
 
 html, body, .main{
     width: 100%;
-    height: 5000px;
+    min-height: 3600px;
 }
 
 .main{
@@ -15,9 +15,7 @@ html, body, .main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
 }
-
 
 /* HEADER */
 
@@ -358,4 +356,23 @@ html, body, .main{
   
   ::-webkit-scrollbar-thumb:hover {
     background-color: #555; 
+  }
+
+  .user{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #logout{
+    width: 80px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: .6s;
+  }
+
+  #logout:hover{
+    transform: scale(1.1); 
   }

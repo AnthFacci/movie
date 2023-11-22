@@ -72,19 +72,25 @@
         }
     }
      
-    
+    if(isset($_SESSION['email']) && $_SESSION['senha']){
     if(isset($_POST['idFilme']) && isset($_POST['nmFilme'])){ 
         $fav = new favorito($_POST['nmFilme'], $_POST['idFilme']);
         $fav->favorita();
     }elseif(isset($_POST['idFilmeRemove']) && isset($_POST['nmFilmeRemove'])){
         $fav = new favorito($_POST['nmFilmeRemove'], $_POST['idFilmeRemove']);
         $fav->removeFav($_POST['nmFilmeRemove'], $_POST['idFilmeRemove']);  
-    }else{
-        
+    }if(isset($_POST['Logout'])){
+           unset($_SESSION['email']);
+           unset($_SESSION['senha']);
+           header('Location: index.php#paralogin');
     }
-
     $getNm = new getName();
     $Nm = $getNm->getNM(); 
+}else{
+    header('Location: index.php#paralogin');
+}
+
+  
 ?>
 
 
@@ -114,6 +120,7 @@
                 </div>
                 <div class="user">
                     <span>Bem-vindo novamente, <span><?php echo ucfirst($Nm); ?></span></span>
+                    <button id="logout">Sair</button>
                 </div>
             </header>
             <div class="carrosel">

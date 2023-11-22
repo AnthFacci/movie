@@ -13,6 +13,7 @@ const btnSearch = document.querySelector('#btnSearch');
 const favList = document.querySelector('#favList');
 const mainDiv = document.querySelector('.main');
 const listH = document.querySelector('.list');
+const logout = document.querySelector('#logout');
 // GET ID IN URL
 const urlID = new URLSearchParams(window.location.search);
 const id = urlID.get('id');
@@ -29,6 +30,27 @@ window.addEventListener('scroll', ()=>{
         header.classList.remove('opaco');
     }
 })
+
+var btnLogout = new FormData();
+btnLogout.append('Logout', 'Saindo');
+
+logout.addEventListener('click', ()=>{
+
+  fetch('home.php', {
+    method: 'POST',
+    body: btnLogout,
+    credentials: 'same-origin'
+  }).then(response => {
+    if (response.ok) {
+        window.location.href = 'index.php#paralogin';
+    } else {
+        console.error('Erro na solicitação de logout:', response.statusText);
+    }
+}).catch(error => {
+    console.error('Erro ao enviar dados:', error);
+});
+});
+
 
 if(!id){
     btnSearch.addEventListener('click', ()=>{

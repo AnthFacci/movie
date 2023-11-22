@@ -11,6 +11,7 @@ const mainFilmes = document.querySelector('.mainFilmes');
 const btnNext = document.querySelector('#btnNext');
 const btnBack = document.querySelector('#btnBack');
 const currentPage = document.querySelector('#currentPage');
+const logout = document.querySelector('#logout');
 let pageAtual = 1;
 //EVENT
 searchInput.value = movie;
@@ -25,7 +26,27 @@ searchBtn.addEventListener('click', ()=>{
     else{
         alert('Digite um valor válido!')
 }  
-})
+});
+
+var btnLogout = new FormData();
+btnLogout.append('Logout', 'Saindo');
+
+logout.addEventListener('click', ()=>{
+
+  fetch('home.php', {
+    method: 'POST',
+    body: btnLogout,
+    credentials: 'same-origin'
+  }).then(response => {
+    if (response.ok) {
+        window.location.href = 'index.php#paralogin';
+    } else {
+        console.error('Erro na solicitação de logout:', response.statusText);
+    }
+}).catch(error => {
+    console.error('Erro ao enviar dados:', error);
+});
+});
 
 //FUNCTIONS
 

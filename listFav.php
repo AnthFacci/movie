@@ -48,28 +48,36 @@
 
     }
 
-    $get = new getFav();
-    $get->getInfo();
+    class getName{
+       public function getNM(){
+           include('config.php');
+           $email = $_SESSION['email'];
+           $senha = $_SESSION['senha'];
+           $requestUser = "SELECT nm_user FROM usuarios WHERE 
+         email_user = '$email' AND senha_user = '$senha';";
+         $resultado = mysqli_query($conexao, $requestUser);
+         if(mysqli_num_rows($resultado) > 0){
+             $userData = mysqli_fetch_assoc($resultado);
+             $userNM = $userData['nm_user'];
+         }
 
-     class getName{
-        public function getNM(){
-            include('config.php');
-            $email = $_SESSION['email'];
-            $senha = $_SESSION['senha'];
-            $requestUser = "SELECT nm_user FROM usuarios WHERE 
-          email_user = '$email' AND senha_user = '$senha';";
-          $resultado = mysqli_query($conexao, $requestUser);
-          if(mysqli_num_rows($resultado) > 0){
-              $userData = mysqli_fetch_assoc($resultado);
-              $userNM = $userData['nm_user'];
-          }
-
-          return $userNM;
-        }
+         return $userNM;
+       }
+   }
+    
+    if(isset($_SESSION['email']) && isset($_SESSION['senha'])){
+        if(isset($_POST['Logout'])){
+            unset($_SESSION['email']);
+            unset($_SESSION['senha']);
+            header('Location: index.php#paralogin');
+        }    
+        $get = new getFav();
+        $get->getInfo();
+        $getNm = new getName();
+        $Nm = $getNm->getNM();
+    }else{
+        header('Location: index.php#paralogin');
     }
-     
-    $getNm = new getName();
-    $Nm = $getNm->getNM(); 
 
 ?>
 
@@ -100,6 +108,7 @@
                     </div>
                     <div class="user">
                         <span>Bem-vindo novamente, <span><?php echo ucfirst($Nm); ?></span></span>
+                        <button id="logout">Sair</button>
                     </div>
              </header>
              <div class="list">

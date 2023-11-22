@@ -52,17 +52,20 @@
         
     }
 
-
-    if(isset($_POST['idFilme']) && isset($_POST['nmFilme'])){
-        
-        $fav = new favorito($_POST['nmFilme'], $_POST['idFilme']);
-        $fav->favorita();
-
-    }elseif(isset($_POST['idFilmeRemove']) && isset($_POST['nmFilmeRemove'])){
-        $fav = new favorito($_POST['nmFilme'], $_POST['idFilme']);
-        $fav->removeFav($_POST['nmFilmeRemove'], $_POST['idFilmeRemove']);
-    }else{
+    if(isset($_SESSION['email']) && isset($_SESSION['senha'])){
+        if(isset($_POST['idFilme']) && isset($_POST['nmFilme'])){
+            
+            $fav = new favorito($_POST['nmFilme'], $_POST['idFilme']);
+            $fav->favorita();
     
+        }elseif(isset($_POST['idFilmeRemove']) && isset($_POST['nmFilmeRemove'])){
+            $fav = new favorito($_POST['nmFilme'], $_POST['idFilme']);
+            $fav->removeFav($_POST['nmFilmeRemove'], $_POST['idFilmeRemove']);
+        }else{
+        
+        }
+    }else{
+        header('Location: index.php#paralogin');
     }
 ?>
 
